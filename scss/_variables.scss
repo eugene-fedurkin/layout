@@ -2,6 +2,9 @@ $color-blue: #082841;
 $color-gray_light: #E6F0F0; // to start of gradient
 $color-gray_bright: #E9F0E6; // to end of gradient
 $color-red: #DD3E18; // to end of gradient
+$color-red-light: #d49585;
+$color-white: #ffffff;
+$color-gray: #d1d1d1;
 
 $title-font-family: Helvetica-Bold;
 $content-font-family: Georgia;
@@ -17,3 +20,7 @@ $count-imgs-to-fourth-slide: 2;
 $count-imgs-to-fifth-slide: 3;
 $count-imgs-to-sixth-slide: 3;
 $count-imgs-to-seventh-slide: 2;
+
+$screen-lg-max: 1024px;
+$screen-md-max: 768px;
+$screen-sm-max: 336px;

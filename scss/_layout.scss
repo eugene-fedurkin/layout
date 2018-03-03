@@ -1,3 +1,4 @@
+body { overflow-x: hidden; }
 section.container {
   display: grid;
   grid-template: 
@@ -6,12 +7,12 @@ section.container {
   width: 100%;
   height: 672px;
   background-color: #082841;
+  overflow: hidden;
   color: #FFFFFF;
 
   img {
     grid-area: mainPhoto;
-    width: 100%;
-    height: 100%;
+    width: 522px;
   }
   .title {
     grid-area: title;
@@ -30,23 +31,68 @@ section.container {
     grid-area: discription;
     padding: 1.7% 6.7% 2.3% 6.7%;
     font-size: 20px;
-    max-width: 37.8%;
+    font-family: $content-font-family;
+    max-width: 544px;
     line-height: 28px;
-    align-self: end;
   }
+
+  @include md {
+    grid-template: 
+    'title'
+    'mainPhoto'
+    'discription';
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    height: 1024px;
+
+    img {
+      width: 384px;
+      height: 384px;
+      border-radius: 50%;
+    }
+
+    p {
+      max-width: 70.8%;
+      align-self: center;
+      line-height: 28px;
+    }
+
+    .title { align-self: flex-end; }
+  }
+
+  @include sm {
+    height: 648px;
+    .title {
+      > h3 { font-size: 16px; };
+      > h1 { font-size: 40px; line-height: 35px; };
+    }
+    img {
+      width: 144px;
+      height: 144px;
+      margin: 40px 0;
+    }
+    p {
+      font-size: 16px;
+      line-height: 28px;
+      max-width: 90.8%;
+    }
+  }
+}
+
+h2 {
+  margin: 60px 0 40px 0;
+  font-size: $font-size_biggest;
+  @include sm { font-size: 32px; margin-bottom: 0; }
 }
 
 main {
   margin: 15px auto;
-  width: 65.6%;
+  width: 944px;
 
-  h2 {
-    margin: 60px 0 40px 0;
-    font-size: $font-size_biggest;
-  }
+  @include lg { width: 91.7%; }
 
   h3 {
-    margin: 20px 0 7px 0;
     font-size: $font-size_middle;
     font-family: $title-font-family;
   }
@@ -61,12 +107,14 @@ main {
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
+
+    @include md { max-width: 91.7%; }
   }
 
   .expectation { // need to rename
     display: grid;
     grid-template-rows: min-content repeat(2, 217px);
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     grid-gap: 20px;
 
     h2 {
@@ -80,7 +128,7 @@ main {
       justify-content: space-between;
       overflow: hidden;
       border-radius: 5px;
-      padding: 5px 30px 5px 30px;
+      padding: 25px 30px 5px 30px;
       background: linear-gradient(to bottom left, $color-gray_light, $color-gray_bright);
 
       p {
@@ -96,24 +144,30 @@ main {
         grid-row: 2 / 3;
       }
       &:nth-child(4) {
-        grid-column: 1 / 3;
+        grid-column: 1 / 4;
         grid-row: 3 / 4;
       }
       &:nth-child(5) {
-        grid-column: 3 / -1;
+        grid-column: 4 / -1;
         grid-row: 3 / 4;
       }
     }
+
+    @include sm { display: none; }
   }
 
-  .works { // add styles
+  .container-slider-expectation { display: none; }
+
+  .works, .container-slider-expectation {
+    @include sm { display: block; }
+
     article {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       margin: 25px 0 110px 0;
       grid-gap: 50px;
 
-      .slider-odd, .slider-even {
+      .slider-odd, .slider-even, .slider-expectation {
         grid-column: 1 / 3;
         border-radius: 5px;
         height: 387px;
@@ -124,20 +178,21 @@ main {
         align-items: flex-end;
         justify-content: center;
         .first-slider__nav, .second-slider__nav, .third-slider__nav,
-        .fourth-slider__nav, .fifth-slider__nav, .sixth-slider__nav, .seventh-slider__nav {
+        .fourth-slider__nav, .fifth-slider__nav, .sixth-slider__nav, .seventh-slider__nav, .slider-expectation__nav {
           width: 12px;
           height: 12px;
           margin: 7px;
           z-index: 10;
-          outline: 6px solid #ccc;
+          outline: 6px solid $color-red;
           outline-offset: -6px;
+          cursor: pointer;
         }
         .first-slider__nav:checked, .second-slider__nav:checked, .third-slider__nav:checked,
-        .fourth-slider__nav:checked, .fifth-slider__nav:checked, .sixth-slider__nav:checked, .seventh-slider__nav:checked {
-            animation: check 0.4s linear forwards;
+        .fourth-slider__nav:checked, .fifth-slider__nav:checked, .sixth-slider__nav:checked, .seventh-slider__nav:checked, .slider-expectation__nav:checked {
+            animation: check 0.2s linear forwards;
         }
         .first-slider__inner, .second-slider__inner, .third-slider__inner,
-        .fourth-slider__inner, .fifth-slider__inner, .sixth-slider__inner, .seventh-slider__inner {
+        .fourth-slider__inner, .fifth-slider__inner, .sixth-slider__inner, .seventh-slider__inner, .slider-expectation__inner {
           position: absolute;
           bottom: 0;
           left: 0;
@@ -172,7 +227,7 @@ main {
         div[class*="slider__contents"] {
           width: calc(100% - 60px);
           height: 387px;
-          margin: 20px auto;
+          margin: 30px auto;
           background-repeat: no-repeat;
           background-size: 100% 100%;
           border-radius: 5px;
@@ -235,7 +290,11 @@ main {
             bottom: calc(100% - #{$i} * 100%);
           }
         }
-
+        @for $i from 1 through 4 {
+          .slider-expectation__nav:checked:nth-of-type(#{$i}) ~ .slider-expectation__inner {
+            bottom: calc(100% - #{$i} * 100%);
+          }
+        }
       }
       .slider-even {
         grid-column: 2 / 4;
@@ -255,15 +314,211 @@ main {
         overflow: hidden;
         max-height: 387px;
 
+        
+        span {
+          margin-bottom: 5px;
+        }
         p {
           -webkit-line-clamp: 13;
+
+          @include sm {
+            grid-row: 4 / -1;
+            grid-column: 1 / 2;
+            -webkit-line-clamp: 6;
+          }
         }
-        a {
-          font-family: $content-font-family;
-          font-size: $font-size_lowest;
-          color: $color-red;
-          text-decoration: none;
+      }
+
+      @include md {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5px;
+
+        .slider-even, .slider-odd {
+          flex-direction: row;
+          grid-column: 1 / -1;
+          align-items: flex-end;
         }
+
+        .slider-even ~ .description, .slider-odd ~ .description {
+          grid-column: 1 / -1;
+          grid-row: 1 / 2;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(8, 1fr);
+          grid-row-gap: 7px;
+          max-height: 230px;
+
+          @include sm {
+            grid-template-columns: 1fr;
+          }
+
+          h3 {
+            margin-right: 25px;
+          }
+          span {
+            grid-row: 2 / -1;
+            @include sm {
+              grid-column: 1 / 2;
+              grid-row: 2 / 5;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+main .container-slider-expectation article .slider-expectation {
+  width: 304px;
+  height: 304px;
+  flex-direction: row;
+  margin: 0 0 30px -10px;
+
+  div.slider__contents {
+    background: linear-gradient(to bottom left, $color-gray_light, $color-gray_bright);
+    box-shadow: none;
+    padding-left: 25px;
+    width: calc(100% - 85px);
+  }
+}
+
+a {
+  display: block;
+  font-family: $content-font-family;
+  font-size: $font-size_lowest;
+  color: $color-red;
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+footer {
+  padding-top: 20px;
+  background: linear-gradient(to bottom left,$color-gray_light, $color-gray_bright);
+  .footer-container {
+    margin: 0 auto;
+    width: 65.6%;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 100px repeat(4,50px) max-content;
+    font-family: $content-font-family;
+    @include sm { grid-template-columns: 1fr; }
+
+    h2 {
+      grid-column: 1 / -1;
+      grid-row: 1 / 2;
+      margin: 0;
+      align-self: center;
+      font-family: $title-font-family;
+    }
+    div {
+      grid-row: 2 / 4;
+      max-width: 327px;
+      @include sm {
+        grid-row: 3 / 5;
+        grid-column: 1 / 2;
+      }
+
+    }
+    span {
+      grid-column: 1 / 2;
+      @include sm { display: none; }
+    }
+    ul {
+      grid-column: 1 / 2;
+      grid-row: 5 / -1;
+      @include sm { grid-column: 1/2!important; }
+
+      li {
+        margin: 5px 0;
+      }
+    }
+    form {
+      grid-row: 2 / -1;
+      display: grid;
+      grid-gap: 20px;
+      grid-template-rows: repeat(4,50px) 40px 50px;
+      @include sm { grid-row: 5 / -1!important; }
+
+      input {
+        height: 50px;
+      }
+      input, textarea, button {
+        font-size: 16px;
+        padding: 15px;
+        border: 1px solid rgba(0, 0, 0, 0);
+        border-radius: 4px;
+        outline: 0;
+        resize: none;
+        font-family: $content-font-family;
+      }
+      textarea {
+        grid-row: 3 / 5;
+      }
+      input::placeholder, textarea::placeholder, button::placeholder {
+        opacity: 0.5;
+      }
+      input:focus:valid, textarea:focus:valid {
+        border: 1px solid $color-gray;
+      }
+      input:focus:invalid, textarea:focus:invalid {
+        border: 1px solid $color-red-light;
+      }
+
+      div {
+        grid-row: 5/6;
+
+        label {
+          color: red;
+          cursor: pointer;
+          font-family: $title-font-family;
+
+          img {
+            height: 20px;
+            margin: 0 5px -3px 0;
+          }
+        }
+        label:hover {
+          opacity: 0.5;
+        }
+
+        input[type="file"] {
+          display: none;
+          font-family: $title-font-family;
+        }
+      }
+
+      button {
+        height: 50px;
+        background: $color-red;
+        color: $color-white;
+
+        &:hover {
+          cursor: pointer;
+          opacity: 0.8;
+        }
+        &:active {
+          transform: translate(1px, 1px);
+        }
+      }
+    }
+
+    @include md {
+      width: 91.7%;
+      grid-gap: 0;
+      grid-row-gap: 20px;
+      
+
+      span { display: none; }
+      ul {
+        grid-column: 2 / -1;
+        grid-row: 2 / 3;
+        overflow: hidden;
+        grid-row: 2 / 4;
+      }
+      form {
+        grid-row: 4 / -1;
+        grid-column: 1 / -1;
       }
     }
   }
@@ -271,11 +526,11 @@ main {
 
 @keyframes check {
   50% {
-    outline-color: #333;
-    box-shadow: 0 0 0 12px #333, 0 0 0 36px rgba(51, 51, 51, 0.2);
+    outline-color: #000000;
+    box-shadow: 0 0 0 5px #000000, 0 0 0 10px rgba(51, 51, 51, 0.2);
   }
   100% {
-    outline-color: #333;
-    box-shadow: 0 0 0 0 #333, 0 0 0 0 rgba(51, 51, 51, 0);
+    outline-color: #000000;
+    box-shadow: 0 0 0 0 #000000, 0 0 0 0 rgba(51, 51, 51, 0);
   }
 }
