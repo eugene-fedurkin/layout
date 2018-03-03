@@ -179,17 +179,20 @@ main {
         justify-content: center;
         .first-slider__nav, .second-slider__nav, .third-slider__nav,
         .fourth-slider__nav, .fifth-slider__nav, .sixth-slider__nav, .seventh-slider__nav, .slider-expectation__nav {
-          width: 12px;
-          height: 12px;
-          margin: 7px;
-          z-index: 10;
-          outline: 6px solid $color-red;
-          outline-offset: -6px;
+          visibility: hidden;
+        }
+        label {
+          height: 8px;
+          width: 8px;
+          margin: 0 5px;
+          border-radius: 50%;
+          background: $color-red;
+          z-index: 1;
           cursor: pointer;
         }
-        .first-slider__nav:checked, .second-slider__nav:checked, .third-slider__nav:checked,
-        .fourth-slider__nav:checked, .fifth-slider__nav:checked, .sixth-slider__nav:checked, .seventh-slider__nav:checked, .slider-expectation__nav:checked {
-            animation: check 0.2s linear forwards;
+        input[type=radio]:checked + label {
+          background: #000000;
+          animation: check 0.2s linear forwards;
         }
         .first-slider__inner, .second-slider__inner, .third-slider__inner,
         .fourth-slider__inner, .fifth-slider__inner, .sixth-slider__inner, .seventh-slider__inner, .slider-expectation__inner {
@@ -527,7 +530,7 @@ footer {
 @keyframes check {
   50% {
     outline-color: #000000;
-    box-shadow: 0 0 0 5px #000000, 0 0 0 10px rgba(51, 51, 51, 0.2);
+    box-shadow: 0 0 0 2px #000000, 0 0 0 5px rgba(51, 51, 51, 0.2);
   }
   100% {
     outline-color: #000000;
