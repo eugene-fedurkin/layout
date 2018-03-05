@@ -10,9 +10,31 @@ section.container {
   overflow: hidden;
   color: #FFFFFF;
 
-  img {
+  figure {
     grid-area: mainPhoto;
-    width: 522px;
+    @include md {
+      height: 384px;
+      width: 384px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    @include sm {
+      height: 144px;
+      width: 144px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 25px;
+    }
+
+    img {
+      width: 522px;
+      @include md { width: 384px; }
+      @include sm {
+        width: 144px;
+        height: 198px;
+      }
+    }
   }
   .title {
     grid-area: title;
@@ -46,12 +68,6 @@ section.container {
     text-align: center;
     height: 1024px;
 
-    img {
-      width: 384px;
-      height: 384px;
-      border-radius: 50%;
-    }
-
     p {
       max-width: 70.8%;
       align-self: center;
@@ -66,11 +82,6 @@ section.container {
     .title {
       > h3 { font-size: 16px; };
       > h1 { font-size: 40px; line-height: 35px; };
-    }
-    img {
-      width: 144px;
-      height: 144px;
-      margin: 40px 0;
     }
     p {
       font-size: 16px;
@@ -108,7 +119,6 @@ main {
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
 
-    @include md { max-width: 91.7%; }
   }
 
   .expectation { // need to rename
@@ -133,6 +143,7 @@ main {
 
       p {
         max-width: 74%;
+        @include md { max-width: 91.7%; }
       }
 
       &:nth-child(2) {
@@ -161,9 +172,19 @@ main {
   .works, .container-slider-expectation {
     @include sm { display: block; }
 
+    article.even {
+      grid-template-columns: 1fr 247px 247px;
+      @include sm { grid-template-columns: repeat(2,1fr); }
+    }
+
+    article.odd {
+      grid-template-columns: 247px 247px 1fr;
+      @include sm { grid-template-columns: repeat(2,1fr); }
+    }
+
     article {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      // grid-template-columns: repeat(3, 1fr);
       margin: 25px 0 110px 0;
       grid-gap: 50px;
 
@@ -177,6 +198,8 @@ main {
         flex-direction: column;
         align-items: flex-end;
         justify-content: center;
+        @include sm { height: 275px; width: 304px }
+
         .first-slider__nav, .second-slider__nav, .third-slider__nav,
         .fourth-slider__nav, .fifth-slider__nav, .sixth-slider__nav, .seventh-slider__nav, .slider-expectation__nav {
           visibility: hidden;
@@ -235,6 +258,7 @@ main {
           background-size: 100% 100%;
           border-radius: 5px;
           box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75);
+          @include sm { height: 216px; }
         }
 
         @for $i from 1 through $count-imgs-to-first-slide {
@@ -379,7 +403,7 @@ main .container-slider-expectation article .slider-expectation {
   div.slider__contents {
     background: linear-gradient(to bottom left, $color-gray_light, $color-gray_bright);
     box-shadow: none;
-    padding-left: 25px;
+    padding: 25px;
     width: calc(100% - 85px);
   }
 }
@@ -430,10 +454,24 @@ footer {
     ul {
       grid-column: 1 / 2;
       grid-row: 5 / -1;
+      margin-top: -5px;
+      list-style-image: url('sqpurple.gif');
       @include sm { grid-column: 1/2!important; }
 
       li {
         margin: 5px 0;
+        display: flex;
+        @include sm { justify-content: flex-start!important };
+
+        div {
+          display: inline-block;
+          width: 17px;
+          height: 17px;
+          opacity: 0.1;
+          background: #000000;
+          border-radius: 2px;
+          margin-right: 10px;
+        }
       }
     }
     form {
@@ -518,6 +556,8 @@ footer {
         grid-row: 2 / 3;
         overflow: hidden;
         grid-row: 2 / 4;
+
+        li { justify-content: center; }
       }
       form {
         grid-row: 4 / -1;

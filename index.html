@@ -5,13 +5,15 @@
     </head>
     <body>
         <section class="container">
-            <img src="./imgs/me.jpg" alt="Photo of me" />
+            <figure>
+                <img src="./imgs/me.jpg" alt="Photo of me" />
+            </figure>
             <div class="title">
                 <h3>Фронт-енд-разработчик</h3>
                 <h1>Евгений Федуркин</h1>
             </div>
             <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Начинающий разработчик. Обучался в The Rolling Scopes School. Изучаю Фронт-енд уже 1.5 года. 
             </p>
         </section>
         <main>
@@ -39,10 +41,14 @@
                 <article>
                     <h2>Ожидания от ШРИ</h2>
                     <div class="slider-expectation">
-                        <input type="radio" name="slider-expectation" checked="checked" class="slider-expectation__nav" />
-                        <input type="radio" name="slider-expectation" class="slider-expectation__nav" />
-                        <input type="radio" name="slider-expectation" class="slider-expectation__nav" />
-                        <input type="radio" name="slider-expectation" class="slider-expectation__nav" />
+                        <input type="radio" id="expectation-slider-first-img" name="slider-expectation" checked="checked" class="slider-expectation__nav" />
+                        <label for="expectation-slider-first-img"></label>
+                        <input type="radio" id="expectation-slider-second-img" name="slider-expectation" class="slider-expectation__nav" />
+                        <label for="expectation-slider-second-img"></label>
+                        <input type="radio" id="expectation-slider-third-img" name="slider-expectation" class="slider-expectation__nav" />
+                        <label for="expectation-slider-third-img"></label>
+                        <input type="radio" id="expectation-slider-fourth-img" name="slider-expectation" class="slider-expectation__nav" />
+                        <label for="expectation-slider-fourth-img"></label>
                         <div class="slider-expectation__inner">
                             <div class="slider__contents">
                                 <h3>Свобода</h3>
@@ -67,7 +73,7 @@
 
             <section class="works">
                 <h2>Мои работы</h2>
-                <article>
+                <article class="odd">
                     <div class="slider-odd">
                         <input type="radio" id="first-slider-first-img" name="first-slider" checked="checked" class="first-slider__nav" />
                         <label for="first-slider-first-img"></label>
@@ -85,15 +91,15 @@
                         </div>
                     </div>
                     <div class="description">
-                        <h3>Google map API with React</h3>
+                        <h3>Google map</h3>
                         <span>
                             <a href="https://github.com/eugene-fedurkin/google-maps-react-app" target="_blank">Code</a>
                         </span>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sh</p>
+                        <p>Приложение использует React с Google map API. Основная функциональность - это добавлять/удалять/редактировать необходимые задачи по определенному адресу выбранному на карте. Задачи сохраняются в localStorage.</p>
                     </div>
                 </article>
 
-                <article>
+                <article class="even">
                     <div class="slider-even">
                         <input type="radio" id="second-slider-first-img" name="second-slider" checked="checked" class="second-slider__nav" />
                         <label for="second-slider-first-img"></label>
@@ -111,15 +117,15 @@
                         </div>
                     </div>
                     <div class="description">
-                        <h3>Google map API with React</h3>
+                        <h3>To Do List</h3>
                         <span>
                             <a href="https://github.com/eugene-fedurkin/react-redux" target="_blank">Code</a>
                         </span>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sh</p>
+                        <p>Это приложение использует React + Redux с Material UI. Так же организован Routing и UNDO/REDU</p>
                     </div>
                 </article>
 
-                <article>
+                <article class="odd">
                     <div class="slider-odd">
                         <input type="radio" id="third-slider-first-img" name="third-slider" checked="checked" class="third-slider__nav" />
                         <label for="third-slider-first-img"></label>
@@ -143,16 +149,16 @@
                         </div>
                     </div>
                     <div class="description">
-                        <h3>Google map API with React</h3>
+                        <h3>Canvas game</h3>
                         <span>
                             <a href="https://github.com/eugene-fedurkin/canvas-game" target="_blank">Code</a>
                             <a href="https://eugene-fedurkin.github.io/canvas-game/" target="_blank">Game</a>
                         </span>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sh</p>
+                        <p>Игра TD вида. В каждом раунде предоставляется  на выбор различные юниты. Цель защититься от наступления используя юнитов, систему баффов. Так же присутствует система критических ударов, уклонений и лечения.</p>
                     </div>
                 </article>
 
-                <article>
+                <article class="even">
                     <div class="slider-even">
                         <input type="radio" id="fourth-slider-first-img" name="fourth-slider" checked="checked" class="fourth-slider__nav" />
                         <label for="fourth-slider-first-img"></label>
@@ -164,16 +170,16 @@
                         </div>
                     </div>
                     <div class="description">
-                        <h3>Google map API with React</h3>
+                        <h3>Магазин</h3>
                         <span>
                             <a href="https://github.com/eugene-fedurkin/css-recipes-and-layouts" target="_blank">Code</a>
                             <a href="https://eugene-fedurkin.github.io/css-recipes-and-layouts/" target="_blank">Layout</a>
                         </span>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sh</p>
+                        <p>Адаптивный макет использует Grid технологию. </p>
                     </div>
                 </article>
 
-                <article>
+                <article class="odd">
                     <div class="slider-odd">
                         <input type="radio" id="fifth-slider-first-img" name="fifth-slider" checked="checked" class="fifth-slider__nav" />
                         <label for="fifth-slider-first-img"></label>
@@ -188,16 +194,16 @@
                         </div>
                     </div>
                     <div class="description">
-                        <h3>Google map API with React</h3>
+                        <h3>Макет</h3>
                         <span>
                             <a href="https://github.com/eugene-fedurkin/bootstrap" target="_blank">Code</a>
                             <a href="https://eugene-fedurkin.github.io/bootstrap/" target="_blank">Layout</a>
                         </span>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sh</p>
+                        <p>Макет использует Bootstrap 2.</p>
                     </div>
                 </article>
 
-                <article>
+                <article class="even">
                     <div class="slider-even">
                         <input type="radio" id="sixth-slider-first-img" name="sixth-slider" checked="checked" class="sixth-slider__nav" />
                         <label for="sixth-slider-first-img"></label>
@@ -212,16 +218,16 @@
                         </div>
                     </div>
                     <div class="description">
-                        <h3>Google map API with React</h3>
+                        <h3>Макет</h3>
                         <span>
                             <a href="https://github.com/eugene-fedurkin/layout-workshop" target="_blank">Code</a>
                             <a href="https://eugene-fedurkin.github.io/layout-workshop/" target="_blank">Layout</a>
                         </span>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sh</p>
+                        <p>Новостной CSS макет сделанный в черно-белом стиле.</p>
                     </div>
                 </article>
 
-                <article>
+                <article class="odd">
                     <div class="slider-odd">
                         <input type="radio" id="seventh-slider-first-img" name="seventh-slider" checked="checked" class="seventh-slider__nav" />
                         <label for="seventh-slider-first-img"></label>
@@ -233,11 +239,11 @@
                         </div>
                     </div>
                     <div class="description">
-                        <h3>Google map API with React</h3>
+                        <h3>Youtube</h3>
                         <span>
                             <a href="https://github.com/eugene-fedurkin/Youtube" target="_blank">Code</a>
                         </span>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sh</p>
+                        <p>Адаптивное приложение предоставляет ссылки на запрошенные видео, и дополнительные данные с использование Youtube API. Ссылки подгружаются постепенно при перелистывании страниц. Так же реализован сваппер.</p>
                     </div>
                 </article>
             </section>
