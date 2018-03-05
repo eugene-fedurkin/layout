@@ -198,6 +198,7 @@ main {
         flex-direction: column;
         align-items: flex-end;
         justify-content: center;
+        @include md { width: 444px; margin: 0 auto; }
         @include sm { height: 275px; width: 304px }
 
         .first-slider__nav, .second-slider__nav, .third-slider__nav,
